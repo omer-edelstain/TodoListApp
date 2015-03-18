@@ -70,9 +70,6 @@ public class TodoAppList extends ActionBarActivity {
             case R.id.menuitemAdd:
                 blnActionRes =  AddItemToList();
                 break;
-            case R.id.menuitemDelete:
-                blnActionRes = DeleteItemFromList(DELETE_FROM_MENU);
-                break;
             case R.id.action_settings:
                 blnActionRes = true;
         }
