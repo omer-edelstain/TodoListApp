@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class TodoAppList extends ActionBarActivity {
     private final int MENU_CONTEXT_DELETE_ID = 1;
+    private final int MENU_CONTEXT_CONTINUE_ID = 2;
     private final int DELETE_FROM_MENU = -1;
     private ArrayList<String> m_arrstrTodoItems;
     private ListView lstvwTodoListElement;
@@ -39,6 +40,7 @@ public class TodoAppList extends ActionBarActivity {
         menu.setHeaderTitle(title);
 
         menu.add(Menu.NONE, MENU_CONTEXT_DELETE_ID, Menu.NONE, "delete");
+        menu.add(Menu.NONE, MENU_CONTEXT_CONTINUE_ID, Menu.NONE, "ok");
     }
 
     @Override
@@ -47,6 +49,8 @@ public class TodoAppList extends ActionBarActivity {
             case MENU_CONTEXT_DELETE_ID:
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
                 return DeleteItemFromList(info.position);
+            case MENU_CONTEXT_CONTINUE_ID:
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }

@@ -4,5 +4,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/menuitemAdd" android:title="@string/add_menu_item"/>
-    <item android:id="@+id/menuitemDelete" android:title="@string/delete_menu_item"/>
 </menu>
