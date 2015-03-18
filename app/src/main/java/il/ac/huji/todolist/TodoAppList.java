@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class TodoAppList extends ActionBarActivity {
     private final int MENU_CONTEXT_DELETE_ID = 1;
+    private final int DELETE_FROM_MENU = -1;
     private ArrayList<String> m_arrstrTodoItems;
     private ListView lstvwTodoListElement;
     private EditText edttxtNewItem;
@@ -37,7 +38,7 @@ public class TodoAppList extends ActionBarActivity {
         String title =  adptDataToControlConnector.getItem(info.position);
         menu.setHeaderTitle(title);
 
-        menu.add(Menu.NONE, MENU_CONTEXT_DELETE_ID, Menu.NONE, title);
+        menu.add(Menu.NONE, MENU_CONTEXT_DELETE_ID, Menu.NONE, "delete");
     }
 
     @Override
@@ -66,7 +67,7 @@ public class TodoAppList extends ActionBarActivity {
                 blnActionRes =  AddItemToList();
                 break;
             case R.id.menuitemDelete:
-                //blnActionRes = DeleteItemFromList();
+                blnActionRes = DeleteItemFromList(DELETE_FROM_MENU);
                 break;
             case R.id.action_settings:
                 blnActionRes = true;
@@ -75,7 +76,7 @@ public class TodoAppList extends ActionBarActivity {
     }
 
     private boolean AddItemToList() {
-        if (edttxtNewItem.getText().toString() != "")
+        if (!edttxtNewItem.getText().toString().matches(""))
         {
             adptDataToControlConnector.add(edttxtNewItem.getText().toString());
             edttxtNewItem.setText("");
@@ -85,7 +86,15 @@ public class TodoAppList extends ActionBarActivity {
     }
 
     private boolean DeleteItemFromList(int p_TaskId) {
-        adptDataToControlConnector.remove(String.valueOf(p_TaskId));
+        int nIndexOfItem = 0;
+        if(p_TaskId >= 0) {
+            nIndexOfItem = p_TaskId;
+        }
+        else
+        {
+            nIndexOfItem = 0;
+        }
+        adptDataToControlConnector.remove(String.valueOf(nIndexOfItem));
         return true;
     }
 }
